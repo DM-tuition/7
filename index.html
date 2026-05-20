@@ -1067,7 +1067,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="#hero" class="nav-logo">
     <div class="nav-logo-circle">D<span style="color:var(--steel)">M</span></div>
@@ -1082,7 +1081,6 @@
   </ul>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <div class="hero-bg-pattern"></div>
   <div class="hero-glow"></div>
@@ -1128,7 +1126,6 @@
   </div>
 </section>
 
-<!-- TICKER -->
 <div class="ticker-wrap">
   <div class="ticker-inner">
     <span>GCSE Tutoring</span><span class="dot">•</span>
@@ -1146,7 +1143,6 @@
   </div>
 </div>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="section-inner">
     <div class="section-label">About DM Tuition</div>
@@ -1199,7 +1195,6 @@
   </div>
 </section>
 
-<!-- SUBJECTS -->
 <section id="subjects">
   <div class="section-inner">
     <div class="section-label">What We Teach</div>
@@ -1260,7 +1255,6 @@
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
 <section id="process">
   <div class="section-inner">
     <div class="section-label">The Process</div>
@@ -1291,7 +1285,6 @@
   </div>
 </section>
 
-<!-- PRICING -->
 <section id="pricing">
   <div class="section-inner">
     <div class="section-label">Pricing</div>
@@ -1347,7 +1340,6 @@
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="section-inner">
     <div class="section-label">Get In Touch</div>
@@ -1375,7 +1367,7 @@
               <div class="contact-method-value">07467 284 353</div>
             </div>
           </a>
-          <a href="https://instagram.com/dmtuition" target="_blank" class="contact-method">
+          <a href="https://instagram.com/dmtuition2026" target="_blank" class="contact-method">
             <span class="contact-method-icon">📸</span>
             <div class="contact-method-info">
               <div class="contact-method-type">Instagram</div>
@@ -1434,7 +1426,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
@@ -1453,7 +1444,7 @@
 </footer>
 
 <script>
-  // Scroll-triggered animations
+  // Safe Scroll-triggered animations layout
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(el => {
       if (el.isIntersecting) {
@@ -1461,16 +1452,14 @@
         el.target.style.transform = 'translateY(0)';
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.05 });
 
   document.querySelectorAll('.subject-card, .step, .pricing-card, .contact-method, .highlight-item').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(el);
   });
 
-  // Stagger subjects
+  // Stagger delays safely
   document.querySelectorAll('.subject-card').forEach((el, i) => {
     el.style.transitionDelay = `${i * 0.05}s`;
   });
