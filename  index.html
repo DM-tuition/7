@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DM Tuition — Focus • Prepare • Perform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1f3c;
+    --navy-mid: #162a4e;
+    --steel: #6a8ab5;
+    --steel-light: #a8bfd4;
+    --cream: #f4f1ec;
+    --white: #ffffff;
+    --text-dark: #1a1a2e;
+    --text-muted: #6b7c93;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 18px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(13,31,60,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(106,138,181,0.2);
+    transition: all 0.3s ease;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+  }
+
+  .nav-logo-circle {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--navy-mid);
+    border: 2px solid var(--steel);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -1px;
+  }
+
+  .nav-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--steel-light);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  .nav-cta {
+    background: var(--steel);
+    color: var(--white) !important;
+    padding: 10px 24px;
+    border-radius: 2px;
+    letter-spacing: 1.5px !important;
+    transition: background 0.3s !important;
+  }
+
+  .nav-cta:hover { background: var(--steel-light) !important; color: var(--navy) !important; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    background: var(--navy);
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-bg-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 60px,
+        rgba(106,138,181,0.03) 60px,
+        rgba(106,138,181,0.03) 61px
+      );
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(106,138,181,0.15) 0%, transparent 70%);
+  }
+
+  .hero-glow-2 {
+    position: absolute;
+    bottom: -100px;
+    left: -100px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(106,138,181,0.08) 0%, transparent 70%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 120px 48px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .hero-text .eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--steel);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-text .eyebrow::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--steel);
+  }
+
+  .hero-text h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 6vw, 84px);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 12px;
+  }
+
+  .hero-text h1 em {
+    font-style: italic;
+    color: var(--steel-light);
+  }
+
+  .hero-tagline {
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--steel);
+    margin-bottom: 32px;
+    margin-top: 8px;
+  }
+
+  .hero-desc {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--steel-light);
+    line-height: 1.8;
+    margin-bottom: 48px;
+    max-width: 440px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--steel);
+    color: var(--white);
+    padding: 16px 36px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  .btn-primary:hover {
+    background: var(--steel-light);
+    color: var(--navy);
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    display: inline-block;
+    border: 1px solid rgba(106,138,181,0.5);
+    color: var(--steel-light);
+    padding: 16px 36px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--steel-light);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+
+  .hero-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .hero-logo-large {
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: var(--navy-mid);
+    border: 2px solid var(--steel);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 80px rgba(106,138,181,0.2);
+    position: relative;
+  }
+
+  .hero-logo-large::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 1px solid rgba(106,138,181,0.15);
+  }
+
+  .logo-dm {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -4px;
+    line-height: 1;
+  }
+
+  .logo-dm .m-letter {
+    color: var(--steel);
+  }
+
+  .logo-book {
+    font-size: 22px;
+    margin: -6px 0 4px;
+  }
+
+  .logo-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 32px;
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--steel);
+    margin-top: 4px;
+  }
+
+  .stat-divider {
+    width: 1px;
+    background: rgba(106,138,181,0.3);
+    align-self: stretch;
+  }
+
+  /* ── TICKER ── */
+  .ticker-wrap {
+    background: var(--steel);
+    padding: 14px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .ticker-inner {
+    display: inline-flex;
+    animation: ticker 25s linear infinite;
+  }
+
+  .ticker-inner span {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--white);
+    padding: 0 32px;
+  }
+
+  .ticker-inner span.dot { color: rgba(255,255,255,0.5); padding: 0 4px; }
+
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ── SECTION BASE ── */
+  section {
+    padding: 100px 48px;
+  }
+
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--steel);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 1px;
+    background: var(--steel);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 4vw, 56px);
+    font-weight: 300;
+    color: var(--navy);
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--steel);
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    background: var(--cream);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-top: 60px;
+  }
+
+  .about-photos {
+    position: relative;
+    height: 480px;
+  }
+
+  .photo-main {
+    position: absolute;
+    top: 0; left: 0;
+    width: 62%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2px;
+    filter: grayscale(10%);
+  }
+
+  .photo-accent {
+    position: absolute;
+    bottom: -20px;
+    right: 0;
+    width: 48%;
+    height: 65%;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 2px;
+    border: 4px solid var(--cream);
+    filter: grayscale(10%);
+  }
+
+  .photo-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--navy);
+    color: var(--white);
+    padding: 16px 20px;
+    text-align: center;
+    border-radius: 2px;
+    z-index: 3;
+  }
+
+  .photo-badge .badge-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--steel-light);
+    line-height: 1;
+  }
+
+  .photo-badge .badge-text {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-top: 4px;
+  }
+
+  .about-text p {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--text-muted);
+    line-height: 1.85;
+    margin-bottom: 20px;
+  }
+
+  .about-text p strong {
+    color: var(--navy);
+    font-weight: 600;
+  }
+
+  .about-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 32px 0;
+  }
+
+  .highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    background: var(--white);
+    border-left: 3px solid var(--steel);
+    border-radius: 0 2px 2px 0;
+  }
+
+  .highlight-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .highlight-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--navy);
+  }
+
+  /* ── SUBJECTS ── */
+  #subjects {
+    background: var(--navy);
+  }
+
+  #subjects .section-title { color: var(--white); }
+  #subjects .section-label { color: var(--steel-light); }
+  #subjects .section-label::before { background: var(--steel-light); }
+
+  .subjects-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-top: 56px;
+  }
+
+  .subject-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(106,138,181,0.2);
+    padding: 28px 16px;
+    text-align: center;
+    border-radius: 2px;
+    transition: all 0.3s;
+    cursor: default;
+  }
+
+  .subject-card:hover {
+    background: rgba(106,138,181,0.1);
+    border-color: var(--steel);
+    transform: translateY(-4px);
+  }
+
+  .subject-icon { font-size: 28px; margin-bottom: 12px; }
+
+  .subject-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--white);
+    letter-spacing: 0.5px;
+  }
+
+  .subject-level {
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--steel);
+    margin-top: 4px;
+  }
+
+  /* ── HOW IT WORKS ── */
+  #process {
+    background: var(--white);
+  }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin-top: 64px;
+    position: relative;
+  }
+
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: calc(12.5% + 20px);
+    right: calc(12.5% + 20px);
+    height: 1px;
+    background: linear-gradient(to right, var(--steel-light), var(--steel), var(--steel-light));
+  }
+
+  .step {
+    text-align: center;
+    position: relative;
+  }
+
+  .step-num {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    position: relative;
+    z-index: 2;
+    border: 2px solid var(--steel);
+  }
+
+  .step-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+
+  .step-desc {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ── PRICING ── */
+  #pricing {
+    background: var(--cream);
+  }
+
+  .pricing-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 64px;
+  }
+
+  .pricing-card {
+    background: var(--white);
+    border: 1px solid rgba(13,31,60,0.1);
+    padding: 48px 36px;
+    border-radius: 2px;
+    position: relative;
+    transition: all 0.3s;
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(13,31,60,0.12);
+  }
+
+  .pricing-card.featured {
+    background: var(--navy);
+    border-color: var(--steel);
+    transform: scale(1.03);
+  }
+
+  .pricing-card.featured:hover {
+    transform: scale(1.03) translateY(-6px);
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--steel);
+    color: var(--white);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 5px 18px;
+    border-radius: 20px;
+  }
+
+  .price-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--steel);
+    margin-bottom: 20px;
+  }
+
+  .pricing-card.featured .price-label { color: var(--steel-light); }
+
+  .price-amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    font-weight: 300;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .pricing-card.featured .price-amount { color: var(--white); }
+
+  .price-period {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+  }
+
+  .pricing-card.featured .price-period { color: var(--steel-light); }
+
+  .price-divider {
+    height: 1px;
+    background: rgba(13,31,60,0.1);
+    margin-bottom: 32px;
+  }
+
+  .pricing-card.featured .price-divider { background: rgba(106,138,181,0.3); }
+
+  .price-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+
+  .price-features li {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .pricing-card.featured .price-features li { color: rgba(255,255,255,0.85); }
+
+  .price-features li::before {
+    content: '✓';
+    color: var(--steel);
+    font-weight: 600;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  .btn-pricing {
+    display: block;
+    text-align: center;
+    padding: 14px 24px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  .btn-pricing-light {
+    background: transparent;
+    border: 1px solid var(--navy);
+    color: var(--navy);
+  }
+
+  .btn-pricing-light:hover {
+    background: var(--navy);
+    color: var(--white);
+  }
+
+  .btn-pricing-dark {
+    background: var(--steel);
+    color: var(--white);
+    border: 1px solid var(--steel);
+  }
+
+  .btn-pricing-dark:hover {
+    background: var(--steel-light);
+    color: var(--navy);
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+  }
+
+  #contact::before {
+    content: '';
+    position: absolute;
+    top: -300px;
+    right: -300px;
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(106,138,181,0.1) 0%, transparent 70%);
+  }
+
+  #contact .section-title { color: var(--white); }
+  #contact .section-label { color: var(--steel-light); }
+  #contact .section-label::before { background: var(--steel-light); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-top: 60px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .contact-info p {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--steel-light);
+    line-height: 1.8;
+    margin-bottom: 40px;
+  }
+
+  .contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .contact-method {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 24px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(106,138,181,0.2);
+    border-radius: 2px;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .contact-method:hover {
+    background: rgba(106,138,181,0.1);
+    border-color: var(--steel);
+    transform: translateX(4px);
+  }
+
+  .contact-method-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .contact-method-info { flex: 1; }
+
+  .contact-method-type {
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--steel);
+    margin-bottom: 3px;
+  }
+
+  .contact-method-value {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--white);
+  }
+
+  .contact-form-area {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form-group label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--steel);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(106,138,181,0.25);
+    border-radius: 2px;
+    padding: 14px 16px;
+    color: var(--white);
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--steel);
+  }
+
+  .form-group select option { background: var(--navy); }
+
+  .form-group textarea { resize: vertical; min-height: 100px; }
+
+  .form-submit {
+    background: var(--steel);
+    color: var(--white);
+    padding: 16px 32px;
+    border: none;
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.3s;
+    align-self: flex-start;
+  }
+
+  .form-submit:hover {
+    background: var(--steel-light);
+    color: var(--navy);
+    transform: translateY(-2px);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #07111f;
+    padding: 48px;
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .footer-tagline {
+    font-size: 9px;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--steel);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover { color: var(--steel-light); }
+
+  .footer-copy {
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up {
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards;
+  }
+
+  .hero-text .eyebrow { animation-delay: 0.1s; }
+  .hero-text h1 { animation-delay: 0.2s; }
+  .hero-text .hero-tagline { animation-delay: 0.3s; }
+  .hero-text .hero-desc { animation-delay: 0.4s; }
+  .hero-text .hero-actions { animation-delay: 0.5s; }
+  .hero-visual { animation-delay: 0.4s; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+
+    section { padding: 72px 24px; }
+
+    .hero-content {
+      grid-template-columns: 1fr;
+      padding: 100px 24px 60px;
+      text-align: center;
+    }
+
+    .hero-text .eyebrow { justify-content: center; }
+    .hero-text .hero-desc { max-width: 100%; }
+    .hero-actions { justify-content: center; }
+    .hero-visual { order: -1; }
+    .hero-logo-large { width: 180px; height: 180px; }
+    .logo-dm { font-size: 52px; }
+    .hero-stats { justify-content: center; }
+
+    .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .about-photos { height: 320px; }
+
+    .subjects-grid { grid-template-columns: repeat(3, 1fr); }
+
+    .process-steps {
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .process-steps::before { display: none; }
+
+    .pricing-cards { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
+    .pricing-card.featured { transform: none; }
+    .pricing-card.featured:hover { transform: translateY(-6px); }
+
+    .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    .form-row { grid-template-columns: 1fr; }
+
+    .footer-inner { flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <div class="nav-logo-circle">D<span style="color:var(--steel)">M</span></div>
+    <span class="nav-brand">DM Tuition</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#subjects">Subjects</a></li>
+    <li><a href="#process">How It Works</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact" class="nav-cta">Enquire</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="eyebrow fade-up">GCSE & 11+ Specialists · Altrincham</div>
+      <h1 class="fade-up">Focus.<br><em>Prepare.</em><br>Perform.</h1>
+      <div class="hero-tagline fade-up">— Expert Tuition from AGSB Students —</div>
+      <p class="hero-desc fade-up">
+        Personalised academic support designed to help you reach your potential. 
+        Run by high-achieving students who know exactly what it takes to succeed.
+      </p>
+      <div class="hero-actions fade-up">
+        <a href="#contact" class="btn-primary">Book Free Intro</a>
+        <a href="#subjects" class="btn-outline">View Subjects</a>
+      </div>
+    </div>
+
+    <div class="hero-visual fade-up">
+      <div class="hero-logo-large">
+        <div class="logo-dm">D<span class="m-letter">M</span></div>
+        <div class="logo-book">📖</div>
+        <div class="logo-name">DM Tuition</div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">£15</div>
+          <div class="stat-label">Per Session</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-num">Free</div>
+          <div class="stat-label">Intro Session</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Subjects</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-inner">
+    <span>GCSE Tutoring</span><span class="dot">•</span>
+    <span>11+ Preparation</span><span class="dot">•</span>
+    <span>Exam Technique</span><span class="dot">•</span>
+    <span>In-Person & Online</span><span class="dot">•</span>
+    <span>£15 Per Session</span><span class="dot">•</span>
+    <span>Free Intro Available</span><span class="dot">•</span>
+    <span>GCSE Tutoring</span><span class="dot">•</span>
+    <span>11+ Preparation</span><span class="dot">•</span>
+    <span>Exam Technique</span><span class="dot">•</span>
+    <span>In-Person & Online</span><span class="dot">•</span>
+    <span>£15 Per Session</span><span class="dot">•</span>
+    <span>Free Intro Available</span><span class="dot">•</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label">About DM Tuition</div>
+    <h2 class="section-title">Tutors who<br><em>actually get it</em></h2>
+
+    <div class="about-grid">
+      <div class="about-photos">
+        <img src="IMG_0970.jpeg" alt="DM Tuition" class="photo-main" onerror="this.style.background='#162a4e';this.style.display='block'">
+        <img src="IMG_0968.jpeg" alt="DM Tuition session" class="photo-accent" onerror="this.style.background='#1e3a5f';this.style.display='block'">
+        <div class="photo-badge">
+          <div class="badge-num">A*</div>
+          <div class="badge-text">Target</div>
+        </div>
+      </div>
+
+      <div class="about-text">
+        <p>
+          DM Tuition is run by <strong>Daniel Stevenson and Mazin Elma</strong>, 
+          Year 12 students at Altrincham Grammar School for Boys — one of the 
+          most academically rigorous schools in the country.
+        </p>
+        <p>
+          We understand the pressures of GCSEs and 11+ exams because we've 
+          been through them ourselves. Our sessions are focused, practical, 
+          and tailored specifically to what works in exam conditions.
+        </p>
+
+        <div class="about-highlights">
+          <div class="highlight-item">
+            <span class="highlight-icon">🎓</span>
+            <span class="highlight-text">Run by AGSB students with real, recent exam experience</span>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-icon">📊</span>
+            <span class="highlight-text">Focused on exam technique, not just content</span>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-icon">📍</span>
+            <span class="highlight-text">In-person (Altrincham area) or online via video call</span>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-icon">💬</span>
+            <span class="highlight-text">Personal, relaxed sessions with real academic rigour</span>
+          </div>
+        </div>
+
+        <a href="#contact" class="btn-primary" style="display:inline-block">Get In Touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUBJECTS -->
+<section id="subjects">
+  <div class="section-inner">
+    <div class="section-label">What We Teach</div>
+    <h2 class="section-title" style="color:var(--white)">Subjects we <em>specialise in</em></h2>
+
+    <div class="subjects-grid">
+      <div class="subject-card">
+        <div class="subject-icon">➕</div>
+        <div class="subject-name">Maths</div>
+        <div class="subject-level">GCSE</div>
+      </div>
+      <div class="subject-card">
+        <div class="subject-icon">∑</div>
+        <div class="subject-name">Further Maths</div>
+        <div class="subject-level">GCSE</div>
+      </div>
+      <div class="subject-card">
+        <div class="subject-icon">⚛️</div>
+        <div class="subject-name">Physics</div>
+        <div class="subject-level">GCSE</div>
+      </div>
+      <div class="subject-card">
+        <div class="subject-icon">🧪</div>
+        <div class="subject-name">Chemistry</div>
+        <div class="subject-level">GCSE</div>
+      </div>
+      <div class="subject-card">
+        <div class="subject-icon">📈</div>
+        <div class="subject-name">Economics</div>
+        <div class="subject-level">GCSE</div>
+      </div>
+      <div class="subject-card">
+        <div class="subject-icon">🔌</div>
+        <div class="subject-name">Electronics</div>
+        <div class="subject-level">GCSE</div>
+      </div>
+      <div class="subject-card">
+        <div class="subject-icon">🌍</div>
+        <div class="subject-name">Geology</div>
+        <div class="subject-level">GCSE</div>
+      </div>
+      <div class="subject-card">
+        <div class="subject-icon">🧬</div>
+        <div class="subject-name">Biology</div>
+        <div class="subject-level">GCSE</div>
+      </div>
+      <div class="subject-card">
+        <div class="subject-icon">🏃</div>
+        <div class="subject-name">PE</div>
+        <div class="subject-level">GCSE</div>
+      </div>
+      <div class="subject-card" style="border-color:var(--steel); background:rgba(106,138,181,0.1)">
+        <div class="subject-icon">⭐</div>
+        <div class="subject-name">11+ Prep</div>
+        <div class="subject-level">Primary</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="process">
+  <div class="section-inner">
+    <div class="section-label">The Process</div>
+    <h2 class="section-title">Simple to <em>get started</em></h2>
+
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-title">Enquire</div>
+        <p class="step-desc">Send us a message via Instagram, Facebook, email or the form below. Tell us what subject and level.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-title">Free Intro</div>
+        <p class="step-desc">We offer a free introductory session so you can see exactly how we work before committing.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-title">Get Matched</div>
+        <p class="step-desc">We tailor each session to your syllabus, learning style, and the specific areas you need to improve.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-title">Perform</div>
+        <p class="step-desc">With focused exam prep and personalised support, you walk into that exam ready to achieve your best.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-inner">
+    <div class="section-label">Pricing</div>
+    <h2 class="section-title">Straightforward <em>rates</em></h2>
+
+    <div class="pricing-cards">
+      <div class="pricing-card">
+        <div class="price-label">Introductory</div>
+        <div class="price-amount">Free</div>
+        <div class="price-period">First session — no commitment</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>1-hour session</li>
+          <li>Assess your current level</li>
+          <li>Understand your goals</li>
+          <li>Meet your tutor</li>
+          <li>No obligation to continue</li>
+        </ul>
+        <a href="#contact" class="btn-pricing btn-pricing-light">Book Now</a>
+      </div>
+
+      <div class="pricing-card featured">
+        <div class="featured-badge">Most Popular</div>
+        <div class="price-label">Standard Session</div>
+        <div class="price-amount">£15</div>
+        <div class="price-period">Per session · 1 hour</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>Personalised to your syllabus</li>
+          <li>Exam technique focus</li>
+          <li>In-person or online</li>
+          <li>Practice past papers</li>
+          <li>Progress tracking</li>
+        </ul>
+        <a href="#contact" class="btn-pricing btn-pricing-dark">Book a Session</a>
+      </div>
+
+      <div class="pricing-card">
+        <div class="price-label">Block Booking</div>
+        <div class="price-amount">£60</div>
+        <div class="price-period">5 sessions · Save £15</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>Everything in Standard</li>
+          <li>Structured learning plan</li>
+          <li>Progress review included</li>
+          <li>Flexible scheduling</li>
+          <li>Best value for exam prep</li>
+        </ul>
+        <a href="#contact" class="btn-pricing btn-pricing-light">Enquire</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">Get In Touch</div>
+    <h2 class="section-title" style="color:var(--white)">Ready to <em>start?</em></h2>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p>
+          Reach out through any of the channels below, or fill in the form 
+          and we'll get back to you quickly. First session is always free.
+        </p>
+
+        <div class="contact-methods">
+          <a href="mailto:DMtuition@gmail.com" class="contact-method">
+            <span class="contact-method-icon">✉️</span>
+            <div class="contact-method-info">
+              <div class="contact-method-type">Email</div>
+              <div class="contact-method-value">DMtuition@gmail.com</div>
+            </div>
+          </a>
+          <a href="tel:07467284353" class="contact-method">
+            <span class="contact-method-icon">📱</span>
+            <div class="contact-method-info">
+              <div class="contact-method-type">Phone / WhatsApp</div>
+              <div class="contact-method-value">07467 284 353</div>
+            </div>
+          </a>
+          <a href="https://instagram.com/dmtuition" target="_blank" class="contact-method">
+            <span class="contact-method-icon">📸</span>
+            <div class="contact-method-info">
+              <div class="contact-method-type">Instagram</div>
+              <div class="contact-method-value">@dmtuition2026</div>
+            </div>
+          </a>
+          <a href="https://facebook.com" target="_blank" class="contact-method">
+            <span class="contact-method-icon">👥</span>
+            <div class="contact-method-info">
+              <div class="contact-method-type">Facebook</div>
+              <div class="contact-method-value">DM Tuition</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-form-area">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="First name">
+          </div>
+          <div class="form-group">
+            <label>Contact Number</label>
+            <input type="tel" placeholder="07...">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Subject Needed</label>
+          <select>
+            <option value="">Select a subject...</option>
+            <option>Maths</option>
+            <option>Further Maths</option>
+            <option>Physics</option>
+            <option>Chemistry</option>
+            <option>Biology</option>
+            <option>Economics</option>
+            <option>Electronics</option>
+            <option>Geology</option>
+            <option>PE</option>
+            <option>11+ Preparation</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message (optional)</label>
+          <textarea placeholder="Tell us a bit about what you're looking for..."></textarea>
+        </div>
+        <button class="form-submit" onclick="alert('Thanks for your enquiry! We\'ll be in touch shortly. For fastest response, DM us on Instagram @dmtuition2026')">Send Enquiry →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-name">DM Tuition</div>
+      <div class="footer-tagline">Focus · Prepare · Perform</div>
+    </div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#subjects">Subjects</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+      <a href="https://instagram.com/dmtuition2026" target="_blank">Instagram</a>
+    </div>
+    <div class="footer-copy">© 2026 DM Tuition · Altrincham</div>
+  </div>
+</footer>
+
+<script>
+  // Scroll-triggered animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.style.opacity = '1';
+        el.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.subject-card, .step, .pricing-card, .contact-method, .highlight-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+
+  // Stagger subjects
+  document.querySelectorAll('.subject-card').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 0.05}s`;
+  });
+
+  document.querySelectorAll('.step').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 0.1}s`;
+  });
+</script>
+</body>
+</html>
